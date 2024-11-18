@@ -357,4 +357,45 @@ const people = [
 // eslint-disable-next-line no-console
 console.log(people); // you can remove it
 
+function calculateAge(born, died) {
+  Math.ceil(died - born);
+}
+
+function calculateCent(year) {
+  Math.ceil(year / 100);
+}
+
 // write your code here
+let dashboard = document.querySelectorAll('dashboard');
+
+if (!dashboard) {
+  dashboard = document.createElement('div');
+  dashboard.id = 'dashboard';
+}
+
+const table = document.createElement('table');
+
+people.forEach((person) => {
+  // сворюю рядок для таблиці
+  const row = document.createElement('th');
+
+  const cells = [
+    person.name,
+    person.gender,
+    person.born,
+    person.died,
+    calculateAge(person.born, person.died),
+    calculateCent(person.born),
+  ];
+
+  cells.forEach((cellPeople) => {
+    const td = document.createElement('td');
+
+    td.textContent = cellPeople;
+    row.appendChild(td);
+  });
+
+  table.appendChild(row);
+});
+
+dashboard.appendChild(table);
