@@ -355,7 +355,7 @@ const people = [
 ];
 
 function calculateAge(born, died) {
-  return Math.ceil(died - born);
+  return died - born;
 }
 
 function calculateCent(year) {
@@ -369,7 +369,7 @@ people.forEach((person) => {
   const row = document.createElement('tr');
   const cells = [
     person.name,
-    person.gender,
+    person.sex,
     person.born,
     person.died,
     calculateAge(person.born, person.died),
